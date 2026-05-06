@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.app-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 40px;
+    padding: 30px 25px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+h1 {
+    font-size: 1.9rem;
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.sub {
+    text-align: center;
+    color: #475569;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f1f5f9;
+    border-radius: 60px;
+    padding: 5px 20px;
+    transition: 0.2s;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 1.3rem;
+    min-width: 70px;
+    color: #0f172a;
+}
+
+.input-group input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 18px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    outline: none;
+    color: #0f172a;
+    text-align: right;
+}
+
+.input-group input::placeholder {
+    color: #94a3b8;
+    font-weight: normal;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 0.5;
+}
+
+.info {
+    margin-top: 35px;
+    background: #eef2ff;
+    border-radius: 28px;
+    padding: 18px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #334155;
+}
+
+.info p:first-child {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.info p {
+    margin: 4px 0;
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        padding: 20px 18px;
+    }
+    .input-group label {
+        min-width: 60px;
+        font-size: 1.1rem;
+    }
+    .input-group input {
+        font-size: 1.1rem;
+        padding: 14px 0;
+    }
+}

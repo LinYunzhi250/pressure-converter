@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#007AFF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <title>气压单位转换</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>🌡️ 气压转换器</h1>
+        <p class="sub">bar · MPa · psi 实时互转</p>
+
+        <div class="input-group">
+            <label>bar</label>
+            <input type="number" id="bar" placeholder="0" step="any">
+        </div>
+
+        <div class="input-group">
+            <label>MPa</label>
+            <input type="number" id="mpa" placeholder="0" step="any">
+        </div>
+
+        <div class="input-group">
+            <label>psi</label>
+            <input type="number" id="psi" placeholder="0" step="any">
+        </div>
+
+        <div class="info">
+            <p>⚡ 转换公式</p>
+            <p>1 bar  = 0.1 MPa</p>
+            <p>1 bar  ≈ 14.5038 psi</p>
+            <p>1 MPa  = 10 bar  ≈ 145.038 psi</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
