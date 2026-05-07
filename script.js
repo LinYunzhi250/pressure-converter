@@ -7,10 +7,13 @@ const barInput = document.getElementById('bar');
 const mpaInput = document.getElementById('mpa');
 const psiInput = document.getElementById('psi');
 
+// 获取清零按钮
+const clearBtn = document.getElementById('clearBtn');
+
 // 防止无限循环的标志
 let updating = false;
 
-// 当用户在 bar 输入时，更新 MPa 和 psi
+// 从 bar 更新所有
 function updateFromBar(value) {
     if (updating) return;
     updating = true;
@@ -26,7 +29,7 @@ function updateFromBar(value) {
     updating = false;
 }
 
-// 当用户在 MPa 输入时，更新 bar 和 psi
+// 从 MPa 更新
 function updateFromMpa(value) {
     if (updating) return;
     updating = true;
@@ -43,7 +46,7 @@ function updateFromMpa(value) {
     updating = false;
 }
 
-// 当用户在 psi 输入时，更新 bar 和 MPa
+// 从 psi 更新
 function updateFromPsi(value) {
     if (updating) return;
     updating = true;
@@ -60,7 +63,52 @@ function updateFromPsi(value) {
     updating = false;
 }
 
-// 监听输入事件
+// 一键清零功能
+function clearAll() {
+    if (updating) return;
+    updating = true;
+    
+    barInput.value = '';
+    mpaInput.value = '';
+    psiInput.value = '';
+    
+    updating = false;
+}
+
+// 主题切换功能
+function changeTheme(themeName) {
+    // 移除所有主题class
+    document.body.classList.remove('theme-pink', 'theme-green', 'theme-orange', 'theme-purple');
+    
+    if (themeName !== 'default') {
+        document.body.classList.add(`theme-${themeName}`);
+    }
+    
+    // 保存用户选择的主题到本地
+    localStorage.setItem('selectedTheme', themeName);
+}
+
+// 加载保存的主题
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme && savedTheme !== 'default') {
+        document.body.classList.add(`theme-${savedTheme}`);
+    }
+}
+
+// 绑定事件
 barInput.addEventListener('input', (e) => updateFromBar(e.target.value));
 mpaInput.addEventListener('input', (e) => updateFromMpa(e.target.value));
 psiInput.addEventListener('input', (e) => updateFromPsi(e.target.value));
+clearBtn.addEventListener('click', clearAll);
+
+// 绑定颜色按钮事件
+document.querySelectorAll('.color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const color = btn.getAttribute('data-color');
+        changeTheme(color);
+    });
+});
+
+// 页面加载时恢复上次选择的主题
+loadSavedTheme();
