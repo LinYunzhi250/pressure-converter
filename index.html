@@ -12,49 +12,92 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- 标题区：温度计换成猪头 -->
-        <h1>🐷 气压转换器</h1>
+        <!-- 标题区 + 卡通头像选择器 -->
+        <div class="title-section">
+            <div class="avatar-selector">
+                <button id="avatarBtn" class="avatar-btn">🐷</button>
+                <div id="avatarDropdown" class="avatar-dropdown">
+                    <button class="avatar-option" data-avatar="🐷">🐷 小猪</button>
+                    <button class="avatar-option" data-avatar="🐶">🐶 小狗</button>
+                    <button class="avatar-option" data-avatar="🐱">🐱 小猫</button>
+                    <button class="avatar-option" data-avatar="🦊">🦊 狐狸</button>
+                    <button class="avatar-option" data-avatar="🐼">🐼 熊猫</button>
+                    <button class="avatar-option" data-avatar="🐸">🐸 青蛙</button>
+                    <button class="avatar-option" data-avatar="🐧">🐧 企鹅</button>
+                    <button class="avatar-option" data-avatar="🦸">🦸 神兵小将</button>
+                    <button class="avatar-option" data-avatar="🔫">🔫 魂斗罗</button>
+                    <button class="avatar-option" data-avatar="🐉">🐉 龙</button>
+                    <button class="avatar-option" data-avatar="🦄">🦄 独角兽</button>
+                    <button class="avatar-option" data-avatar="🤖">🤖 机器人</button>
+                </div>
+            </div>
+            <h1 id="appTitle">气压转换器</h1>
+        </div>
         <p class="sub">bar · MPa · psi 实时互转</p>
 
-        <!-- 三个输入框（数值现在在框内） -->
+        <!-- 三个输入框 -->
         <div class="input-group">
             <label>bar</label>
             <input type="number" id="bar" placeholder="0" step="any" value="0">
         </div>
-
         <div class="input-group">
             <label>MPa</label>
             <input type="number" id="mpa" placeholder="0" step="any" value="0">
         </div>
-
         <div class="input-group">
             <label>psi</label>
             <input type="number" id="psi" placeholder="0" step="any" value="0">
         </div>
 
-        <!-- 新增：一键清零按钮 -->
+        <!-- 一键清零按钮 -->
         <div class="clear-btn-container">
             <button id="clearBtn" class="clear-button">🗑️ 一键清零</button>
         </div>
 
-        <!-- 新增：主题颜色选择模块 -->
-        <div class="theme-selector">
-            <p class="theme-label">🎨 选择主题颜色</p>
-            <div class="color-options">
-                <button class="color-btn" data-color="default" style="background: #667eea;"></button>
-                <button class="color-btn" data-color="pink" style="background: #f472b6;"></button>
-                <button class="color-btn" data-color="green" style="background: #34d399;"></button>
-                <button class="color-btn" data-color="orange" style="background: #fb923c;"></button>
-                <button class="color-btn" data-color="purple" style="background: #a855f7;"></button>
+        <!-- 🎨 自由调色板模块 -->
+        <div class="color-palette">
+            <p class="theme-label">🎨 自由调色板</p>
+            
+            <!-- 预设颜色快捷选择 -->
+            <div class="preset-colors">
+                <button class="preset-color" style="background: #667eea;"></button>
+                <button class="preset-color" style="background: #f472b6;"></button>
+                <button class="preset-color" style="background: #34d399;"></button>
+                <button class="preset-color" style="background: #fb923c;"></button>
+                <button class="preset-color" style="background: #a855f7;"></button>
+                <button class="preset-color" style="background: #ef4444;"></button>
+                <button class="preset-color" style="background: #06b6d4;"></button>
+                <button class="preset-color" style="background: #84cc16;"></button>
+            </div>
+            
+            <!-- 自选颜色区域 -->
+            <div class="custom-color-area">
+                <label class="color-picker-label">
+                    🎯 自选颜色
+                    <input type="color" id="colorPicker" class="color-picker" value="#667eea">
+                </label>
+                <button id="applyColorBtn" class="apply-btn">应用</button>
+                <button id="randomColorBtn" class="random-btn">🎲 随机组合</button>
+            </div>
+            
+            <!-- 保存的组合方案 -->
+            <div class="saved-schemes">
+                <p class="scheme-label">⭐ 我的配色方案</p>
+                <div id="schemeList" class="scheme-list">
+                    <button class="scheme-btn" data-scheme="0">方案 1</button>
+                    <button class="scheme-btn" data-scheme="1">方案 2</button>
+                    <button class="scheme-btn" data-scheme="2">方案 3</button>
+                </div>
+                <button id="saveSchemeBtn" class="save-scheme-btn">💾 保存当前配色</button>
             </div>
         </div>
 
         <!-- 转换公式 -->
         <div class="info">
             <p>⚡ 转换公式</p>
-            <p>1 bar  = 0.1 MPa</p>
-            <p>1 bar  ≈ 14.5038 psi</p>
-            <p>1 MPa  = 10 bar  ≈ 145.038 psi</p>
+            <p>1 bar = 0.1 MPa</p>
+            <p>1 bar ≈ 14.5038 psi</p>
+            <p>1 MPa = 10 bar ≈ 145.038 psi</p>
         </div>
     </div>
     <script src="script.js"></script>
