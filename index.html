@@ -12,24 +12,44 @@
 </head>
 <body>
     <div class="app-container">
-        <h1>🌡️ 气压转换器</h1>
+        <!-- 标题区：温度计换成猪头 -->
+        <h1>🐷 气压转换器</h1>
         <p class="sub">bar · MPa · psi 实时互转</p>
 
+        <!-- 三个输入框（数值现在在框内） -->
         <div class="input-group">
             <label>bar</label>
-            <input type="number" id="bar" placeholder="0" step="any">
+            <input type="number" id="bar" placeholder="0" step="any" value="0">
         </div>
 
         <div class="input-group">
             <label>MPa</label>
-            <input type="number" id="mpa" placeholder="0" step="any">
+            <input type="number" id="mpa" placeholder="0" step="any" value="0">
         </div>
 
         <div class="input-group">
             <label>psi</label>
-            <input type="number" id="psi" placeholder="0" step="any">
+            <input type="number" id="psi" placeholder="0" step="any" value="0">
         </div>
 
+        <!-- 新增：一键清零按钮 -->
+        <div class="clear-btn-container">
+            <button id="clearBtn" class="clear-button">🗑️ 一键清零</button>
+        </div>
+
+        <!-- 新增：主题颜色选择模块 -->
+        <div class="theme-selector">
+            <p class="theme-label">🎨 选择主题颜色</p>
+            <div class="color-options">
+                <button class="color-btn" data-color="default" style="background: #667eea;"></button>
+                <button class="color-btn" data-color="pink" style="background: #f472b6;"></button>
+                <button class="color-btn" data-color="green" style="background: #34d399;"></button>
+                <button class="color-btn" data-color="orange" style="background: #fb923c;"></button>
+                <button class="color-btn" data-color="purple" style="background: #a855f7;"></button>
+            </div>
+        </div>
+
+        <!-- 转换公式 -->
         <div class="info">
             <p>⚡ 转换公式</p>
             <p>1 bar  = 0.1 MPa</p>
