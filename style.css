@@ -5,7 +5,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 默认主题（紫色渐变） */
+/* 默认主题 */
 body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -15,26 +15,6 @@ body {
     align-items: center;
     padding: 20px;
     transition: background 0.3s ease;
-}
-
-/* 粉色主题 */
-body.theme-pink {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-/* 绿色主题 */
-body.theme-green {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-/* 橙色主题 */
-body.theme-orange {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-}
-
-/* 紫色主题 */
-body.theme-purple {
-    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
 }
 
 .app-container {
@@ -48,20 +28,86 @@ body.theme-purple {
     transition: all 0.3s ease;
 }
 
+/* 标题区域 + 头像选择器 */
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.avatar-selector {
+    position: relative;
+}
+
+.avatar-btn {
+    font-size: 2.2rem;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.avatar-btn:active {
+    transform: scale(0.95);
+}
+
+/* 头像下拉菜单 */
+.avatar-dropdown {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 10px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    z-index: 100;
+    min-width: 160px;
+}
+
+.avatar-dropdown.show {
+    display: grid;
+}
+
+.avatar-option {
+    background: #f1f5f9;
+    border: none;
+    border-radius: 40px;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.avatar-option:active {
+    background: #e2e8f0;
+}
+
 h1 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     text-align: center;
     color: #1e293b;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 .sub {
     text-align: center;
     color: #475569;
     margin-bottom: 30px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
+/* 输入框组 */
 .input-group {
     margin-bottom: 20px;
     display: flex;
@@ -70,7 +116,6 @@ h1 {
     background: #f1f5f9;
     border-radius: 60px;
     padding: 5px 20px;
-    transition: 0.2s;
 }
 
 .input-group label {
@@ -80,7 +125,6 @@ h1 {
     color: #0f172a;
 }
 
-/* ✅ 修复版：数值在框内 + 隐藏手机箭头 */
 .input-group input {
     flex: 1;
     background: transparent;
@@ -92,12 +136,10 @@ h1 {
     color: #0f172a;
     text-align: right;
     width: 100%;
-    /* 隐藏 Firefox 箭头 */
     -moz-appearance: textfield;
     appearance: none;
 }
 
-/* 隐藏 Chrome/Safari/手机浏览器 箭头 */
 .input-group input::-webkit-outer-spin-button,
 .input-group input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -106,7 +148,6 @@ h1 {
 
 .input-group input::placeholder {
     color: #94a3b8;
-    font-weight: normal;
     text-align: right;
 }
 
@@ -130,38 +171,37 @@ h1 {
     gap: 8px;
     cursor: pointer;
     transition: transform 0.2s, background 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .clear-button:active {
     transform: scale(0.96);
-    background: #dc2626;
 }
 
-/* 主题选择器 */
-.theme-selector {
+/* 调色板区域 */
+.color-palette {
     background: #f8fafc;
-    border-radius: 30px;
-    padding: 12px 16px;
-    margin: 10px 0 15px;
-    text-align: center;
+    border-radius: 24px;
+    padding: 16px;
+    margin: 10px 0;
 }
 
 .theme-label {
-    font-size: 0.85rem;
-    color: #475569;
-    margin-bottom: 10px;
-    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1e293b;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-align: center;
 }
 
-.color-options {
+.preset-colors {
     display: flex;
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 16px;
 }
 
-.color-btn {
+.preset-color {
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -169,11 +209,110 @@ h1 {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     cursor: pointer;
     transition: transform 0.2s;
-    background: #667eea;
 }
 
-.color-btn:active {
+.preset-color:active {
     transform: scale(0.9);
+}
+
+.custom-color-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding: 10px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.color-picker-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.color-picker {
+    width: 50px;
+    height: 40px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.apply-btn, .random-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.apply-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.random-btn {
+    background: #8b5cf6;
+    color: white;
+}
+
+.apply-btn:active, .random-btn:active {
+    transform: scale(0.95);
+}
+
+/* 保存的配色方案 */
+.saved-schemes {
+    text-align: center;
+}
+
+.scheme-label {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.scheme-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.scheme-btn {
+    background: #e2e8f0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.scheme-btn:active {
+    background: #cbd5e1;
+}
+
+.save-scheme-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.save-scheme-btn:active {
+    transform: scale(0.95);
 }
 
 /* 转换公式区域 */
@@ -201,6 +340,14 @@ h1 {
     .app-container {
         padding: 20px 18px;
     }
+    .avatar-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
     .input-group label {
         min-width: 60px;
         font-size: 1.1rem;
@@ -209,8 +356,12 @@ h1 {
         font-size: 1.1rem;
         padding: 14px 8px 14px 0;
     }
-    .color-btn {
+    .preset-color {
         width: 38px;
         height: 38px;
+    }
+    .avatar-option {
+        font-size: 0.9rem;
+        padding: 6px 10px;
     }
 }
